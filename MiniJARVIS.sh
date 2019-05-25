@@ -28,12 +28,15 @@ echo ---------------------------------------------------------------------
 13) Shutdownpc ;;
 14) Schedule ;;
 15) Diet ;;
+16) Changeds ;;
 esac
 }
 Update(){
 sudo apt-get update
+sudo apt update
 echo "UPDATE FINISHED!"
 sudo apt-get upgrade
+sudo apt upgrade
 echo "UPGRADE FINISHED!"
  Menu
 }
@@ -70,7 +73,7 @@ then
  read AppName
  sudo apt-get remove $AppName
  else
- echo "You did not select 1 or 2. "
+ echo "You did not chose 1 or 2. "
  fi
  Menu
 }
@@ -150,6 +153,7 @@ Help(){
     echo "[13] Shutdown computer"
     echo "[14] See your Schedule"
     echo "[15] See your diet"
+    echo "[16] Change diet or schedule?"
 }
 Say(){
 echo "I will say what you want me to: "
@@ -175,6 +179,20 @@ Menu
 Diet(){
 echo "That's your diet sir: "
 cat Diet
+Menu
+}
+Changeds(){
+echo "Do you want to change your schedule or your diet archive, sir? 1 for schedule 2 for diet"
+read choiceds
+if [ $choiceds == 1 ]
+then
+  nano Schedule
+elif [ $choiceds == 2 ]
+then
+nano Diet
+else
+  echo "you did not chose 1 ir 2. "
+fi
 Menu
 }
 Menu
